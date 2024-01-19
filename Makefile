@@ -8,10 +8,10 @@ TARGETS=$(shell find benchmarks/* -maxdepth 0 -type d)
 # TARGETS=benchmarks/histogram
 
 build:
-	@set -e; for t in $(TARGETS); do make -C $$t build-native; done
+	@set -e; for t in $(TARGETS); do make -C $$t build-native > $${t}_native.log; done
 
 mctoll: build
-	@set -e; for t in $(TARGETS); do make -C $$t mctoll; done
+	@set -e; for t in $(TARGETS); do make -C $$t mctoll > $${t}_mctoll.log; done
 
 recompile-x86: mctoll
 	@set -e; for t in $(TARGETS); do make -C $$t recompile-x86; done
