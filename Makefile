@@ -24,6 +24,7 @@ clean:
 
 package:
 	@rm -rf build
+	@cp *.log build/
 	@for t in $(TARGETS); do mkdir -p build/benchmarks/`basename $$t`; cp -r  $$t/inputs $$t/build build/benchmarks/`basename $$t`/; done
 	@cp benchmark.py run-all.sh build/
 
